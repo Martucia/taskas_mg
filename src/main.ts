@@ -15,9 +15,12 @@ async function bootstrap() {
   SwaggerModule.setup('api', app, document);
 
   app.use(cookieParser());
+
+  const client_url = process.env.CLIENT_URL || '';
+
   app.enableCors({
     origin: [
-      'http://localhost:3001',
+      client_url,
       'chrome-extension://jcmfnmkpolncpgmjlhlknajklonbkcdc',
     ],
     credentials: true,
