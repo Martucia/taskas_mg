@@ -1,0 +1,395 @@
+openapi: 3.0.0
+paths:
+  /:
+    get:
+      operationId: AppController_getHello
+      parameters: []
+      responses:
+        '200':
+          description: ''
+  /auth/sign-up:
+    post:
+      operationId: AuthController_signUp
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SignUpBodyDto'
+      responses:
+        '201':
+          description: ''
+  /auth/sign-in:
+    post:
+      operationId: AuthController_signIn
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SignInBodyDto'
+      responses:
+        '200':
+          description: ''
+  /auth/sign-out:
+    post:
+      operationId: AuthController_signOut
+      parameters: []
+      responses:
+        '200':
+          description: ''
+  /auth/session:
+    get:
+      operationId: AuthController_getSessionInfo
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetSessionInfoDto'
+  /account:
+    get:
+      operationId: AccountController_getAccount
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountDto'
+    patch:
+      operationId: AccountController_patch
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchAccountDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountDto'
+  /file/{filename}:
+    get:
+      operationId: FileController_getImage
+      parameters:
+        - name: filename
+          required: true
+          in: path
+          schema:
+            type: string
+      responses:
+        '200':
+          description: ''
+  /category:
+    post:
+      operationId: CategoryController_create
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCategoryDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CategoryDto'
+    delete:
+      operationId: CategoryController_remove
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: string
+      responses:
+        '200':
+          description: ''
+    patch:
+      operationId: CategoryController_patch
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchCategoryDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CategoryDto'
+    get:
+      operationId: CategoryController_getAll
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CategoryDto'
+  /category/{id}:
+    get:
+      operationId: CategoryController_getOne
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CategoryDto'
+  /tasks:
+    post:
+      operationId: TasksController_create
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateTaskBodyDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskDto'
+    patch:
+      operationId: TasksController_patch
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchTaskBodyDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskDto'
+  /tasks/{categoryId}:
+    get:
+      operationId: TasksController_getAll
+      parameters:
+        - name: categoryId
+          required: true
+          in: path
+          schema:
+            type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TaskDto'
+  /tasks/{id}:
+    delete:
+      operationId: TasksController_remove
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskDto'
+info:
+  title: Taska Api
+  description: ''
+  version: '1.0'
+  contact: {}
+tags:
+  - name: taska
+    description: ''
+servers: []
+components:
+  schemas:
+    SignUpAccountDataBodyDto:
+      type: object
+      properties:
+        userName:
+          type: string
+      required:
+        - userName
+    SignUpBodyDto:
+      type: object
+      properties:
+        email:
+          type: string
+          example: email@gmail.com
+        password:
+          type: string
+          example: '12345'
+        accountData:
+          $ref: '#/components/schemas/SignUpAccountDataBodyDto'
+      required:
+        - email
+        - password
+        - accountData
+    SignInBodyDto:
+      type: object
+      properties:
+        email:
+          type: string
+          example: email@gmail.com
+        password:
+          type: string
+          example: '12345'
+      required:
+        - email
+        - password
+    GetSessionInfoDto:
+      type: object
+      properties:
+        id:
+          type: string
+        email:
+          type: string
+          example: email@gmail.com
+        iat:
+          type: number
+        exp:
+          type: number
+      required:
+        - id
+        - email
+        - iat
+        - exp
+    AccountDto:
+      type: object
+      properties:
+        id:
+          type: string
+        userName:
+          type: string
+        ownerId:
+          type: string
+      required:
+        - id
+        - userName
+        - ownerId
+    PatchAccountDto:
+      type: object
+      properties:
+        userName:
+          type: string
+      required:
+        - userName
+    CreateCategoryDto:
+      type: object
+      properties:
+        name:
+          type: string
+        iconPath:
+          type: string
+      required:
+        - name
+        - iconPath
+    CategoryDto:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        iconPath:
+          type: string
+        ownerId:
+          type: string
+      required:
+        - id
+        - name
+        - iconPath
+        - ownerId
+    PatchCategoryDto:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        iconPath:
+          type: string
+      required:
+        - id
+        - name
+        - iconPath
+    CreateTaskBodyDto:
+      type: object
+      properties:
+        name:
+          type: string
+        ownerId:
+          type: string
+      required:
+        - name
+        - ownerId
+    TaskDto:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        isCompleted:
+          type: boolean
+        ownerId:
+          type: string
+      required:
+        - id
+        - name
+        - createdAt
+        - isCompleted
+        - ownerId
+    PatchTaskBodyDto:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        isCompleted:
+          type: boolean
+      required:
+        - id
+        - name
+        - isCompleted
