@@ -16,11 +16,11 @@ async function bootstrap() {
 
   app.use(cookieParser());
 
-  const client_url = process.env.CLIENT_URL || '';
+  // const client_url = process.env.CLIENT_URL || '';
 
   app.enableCors({
     origin: [
-      client_url,
+      "https://taskas.vercel.app/",
       'chrome-extension://jcmfnmkpolncpgmjlhlknajklonbkcdc',
     ],
     credentials: true,
