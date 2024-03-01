@@ -5,7 +5,7 @@ import * as cookieParser from 'cookie-parser';
 import { ValidationPipe } from '@nestjs/common';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create(AppModule, { cors: true });
   const config = new DocumentBuilder()
     .setTitle('Taska Api')
     .setVersion('1.0')
@@ -20,7 +20,7 @@ async function bootstrap() {
 
   app.enableCors({
     origin: [
-      "https://taskas.vercel.app/",
+      'https://taskas.vercel.app/',
       'chrome-extension://jcmfnmkpolncpgmjlhlknajklonbkcdc',
     ],
     credentials: true,
