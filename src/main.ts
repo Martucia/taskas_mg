@@ -27,9 +27,8 @@ async function bootstrap() {
   // }
 
   app.enableCors({
-    origin: true,
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
-    credentials: false,
+    origin: 'https://taskas-mg.vercel.app',
+    credentials: true,
   });
   
   app.useGlobalPipes(new ValidationPipe());
