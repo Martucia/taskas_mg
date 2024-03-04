@@ -16,11 +16,16 @@ async function bootstrap() {
 
   app.use(cookieParser());
 
+  // app.enableCors({
+  //   origin: [
+  //     'https://taskas-mg.vercel.app',
+  //     'chrome-extension://jcmfnmkpolncpgmjlhlknajklonbkcdc',
+  //   ],
+  //   credentials: true,
+  // });
+
   app.enableCors({
-    origin: [
-      'https://taskas-mg.vercel.app',
-      'chrome-extension://jcmfnmkpolncpgmjlhlknajklonbkcdc',
-    ],
+    origin: true,
     credentials: true,
   });
 
