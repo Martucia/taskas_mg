@@ -16,21 +16,14 @@ async function bootstrap() {
 
   app.use(cookieParser());
 
-  // const client_url = process.env.CLIENT_URL || '';
-
-  // {
-  //   origin: [
-  //     'https://taskas.vercel.app/',
-  //     'chrome-extension://jcmfnmkpolncpgmjlhlknajklonbkcdc',
-  //   ],
-  //   credentials: true,
-  // }
-
   app.enableCors({
-    origin: 'https://taskas-mg.vercel.app',
+    origin: [
+      'https://taskas-mg.vercel.app',
+      'chrome-extension://jcmfnmkpolncpgmjlhlknajklonbkcdc',
+    ],
     credentials: true,
   });
-  
+
   app.useGlobalPipes(new ValidationPipe());
 
   await app.listen(3000);
