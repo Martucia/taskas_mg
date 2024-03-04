@@ -26,10 +26,12 @@ async function bootstrap() {
   //   credentials: true,
   // });
 
-  app.enableCors({
-    origin: '*',
-    credentials: true,
-  });
+  // {
+  //   origin: '*',
+  //   credentials: true,
+  // }
+
+  app.enableCors();
 
   app.useGlobalPipes(new ValidationPipe());
 
