@@ -26,10 +26,7 @@ async function bootstrap() {
   // });
 
   const corsOptions: CorsOptions = {
-    origin: [
-      'https://taskas-mg.vercel.app',
-      'chrome-extension://jcmfnmkpolncpgmjlhlknajklonbkcdc'
-    ],
+    origin: 'https://taskas-mg.vercel.app',
     credentials: true,
   };
 
