@@ -17,14 +17,6 @@ async function bootstrap() {
 
   app.use(cookieParser());
 
-  // app.enableCors({
-  //   origin: [
-  //     'https://taskas-mg.vercel.app',
-  //     'chrome-extension://jcmfnmkpolncpgmjlhlknajklonbkcdc',
-  //   ],
-  //   credentials: true,
-  // });
-
   const corsOptions: CorsOptions = {
     origin: 'https://taskas-mg.vercel.app',
     credentials: true,
