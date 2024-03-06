@@ -4,8 +4,7 @@ export const apiInstance = axios.create({
   baseURL: "https://taskas-mg.onrender.com",
   withCredentials: true,
   headers: {
-    "Content-Type": "application/json",
-    "Access-Control-Allow-Origin": "*"
+    "Content-Type": "application/json"
   },
 });
 
