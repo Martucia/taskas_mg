@@ -1,7 +1,7 @@
 import axios, { AxiosError, AxiosRequestConfig } from "axios";
 
 export const apiInstance = axios.create({
-  baseURL: "https://taskas-mg.onrender.com",
+  baseURL: "https://taskass.onrender.com",
   withCredentials: true,
   headers: {
     "Content-Type": "application/json"

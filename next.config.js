@@ -5,7 +5,7 @@ const nextConfig = {
     return [
       {
         source: "/api/:path*",
-        destination: "https://taskas-mg.onrender.com/:path*",
+        destination: "https://taskass.onrender.com/:path*",
       },
     ];
   },
